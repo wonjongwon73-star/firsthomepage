@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모던 벽지 | 4050 라이프스타일을 위한 미니멀 디자인</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #333; /* 어두운 텍스트 */
+            --secondary-color: #666; /* 보조 텍스트 */
+            --accent-color: #E0E0E0; /* 밝은 회색 강조 */
+            --background-light: #F8F8F8; /* 아주 밝은 배경 */
+            --background-white: #FFFFFF; /* 흰색 배경 */
+            --border-color: #EEE; /* 얇은 경계선 */
+            --header-height: 80px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            color: var(--primary-color);
+            background-color: var(--background-light);
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            width: 100%;
+            height: var(--header-height);
+            background-color: var(--background-white);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .header-container {
+            width: 1200px;
+            max-width: 90%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 40px;
+        }
+
+        nav ul li a {
+            font-size: 17px;
+            font-weight: 500;
+            color: var(--secondary-color);
+            position: relative;
+            padding-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 70vh; /* viewport height */
+            background-color: var(--accent-color); /* 임시 배경색 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--primary-color);
+            margin-top: var(--header-height);
+            overflow: hidden; /* 이미지 오버플로우 방지 */
+            background-size: cover;
+            background-position: center;
+            background-image: url('https://image.replicate.ai/noodles/g5c4f210a7b48c4e0b0b537f2a1b14a242c76a9a3'); /* 삽입된 Hero 이미지 */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.3) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            color: var(--primary-color); /* 텍스트 색상을 어둡게 유지 */
+        }
+
+        .hero p {
+            font-size: 20px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            color: var(--secondary-color); /* 텍스트 색상을 어둡게 유지 */
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--background-white);
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            background-color: #555;
+            transform: translateY(-2px);
+        }
+
+        /* Section General Styling */
+        .section {
+            padding: 80px 0;
+            text-align: center;
+            background-color: var(--background-white);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section:nth-of-type(even) {
+            background-color: var(--background-light);
+        }
+
+        .container {
+            width: 1200px;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 44px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            letter-spacing: -0.8px;
+        }
+
+        .section-subtitle {
+            font-size: 19px;
+            font-weight: 300;
+            color: var(--secondary-color);
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            text-align: left;
+            flex-wrap: wrap; /* 반응형을 위해 추가 */
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+        }
+
+        .about-text h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+        }
+
+        .about-text p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            line-height: 1.8;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Products Section */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .product-item {
+            background-color: var(--background-white);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+        }
+
+        .product-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-info h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .product-info p {
+            font-size: 16px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            line-height: 1.7;
+            height: 75px; /* 3줄 고정 높이 */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+
+        .product-info .price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .product-info .btn {
+            padding: 12px 25px;
+            font-size: 16px;
+            box-shadow: none;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        .product-info .btn:hover {
+            background-color: var(--primary-color);
+            color: var(--background-white);
+        }
+
+        /* Contact Section */
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: var(--background-white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 17px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 16px;
+            color: var(--primary-color);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(51, 51, 51, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form .btn {
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--background-white);
+            padding: 60px 0;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+            text-align: left;
+        }
+
+        .footer-col h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-col p, .footer-col ul li {
+            margin-bottom: 10px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .footer-col a {
+            color: rgba(255,255,255,0.7);
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--background-white);
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 24px;
+            color: rgba(255,255,255,0.7);
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--background-white);
+        }
+
+        .copyright {
+            width: 100%;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 15px;
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .header-container {
+                max-width: 95%;
+            }
+
+            nav ul li {
+                margin-left: 25px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 38px;
+            }
+
+            .section-subtitle {
+                font-size: 17px;
+            }
+
+            .about-content {
+                flex-direction: column;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .about-image, .about-text {
+                max-width: 100%;
+            }
+
+            .about-text h3 {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 24px;
+            }
+
+            nav {
+                display: none; /* 모바일에서는 햄버거 메뉴 등으로 대체 고려 */
+            }
+
+            .hero {
+                height: 60vh;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .section-subtitle {
+                margin-bottom: 40px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-col {
+                min-width: 100%;
+                text-align: center;
+            }
+
+            .footer-col h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .social-links {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            .hero p {
+                font-size: 15px;
+            }
+            .btn {
+                padding: 12px 25px;
+                font-size: 16px;
+            }
+            .form-group input,
+            .form-group textarea {
+                padding: 12px;
+                font-size: 15px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">MODERN WALL</a>
+            <nav>
+                <ul>
+                    <li><a href="#hero">홈</a></li>
+                    <li><a href="#about">회사소개</a></li>
+                    <li><a href="#products">제품</a></li>
+                    <li><a href="#contact">문의</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>당신의 공간에 미니멀리즘을 더하다</h1>
+            <p>4050 세대의 세련된 취향을 위한 고품격 모던 벽지</p>
+            <a href="#products" class="btn">제품 보러가기</a>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">우아함과 품격을 위한 선택</h2>
+            <p class="section-subtitle">저희는 4050 세대의 라이프스타일에 완벽하게 어울리는 미니멀하고 모던한 벽지를 만듭니다.</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>미니멀리즘의 가치, 벽지 안에 담다</h3>
+                    <p>복잡함 속에서 단순함의 아름다움을 추구하는 현대인들을 위해, 저희 Modern Wall은 절제된 디자인과 최고급 소재를 사용하여 공간에 평온함과 세련됨을 선사합니다.</p>
+                    <p>오랜 경험과 장인정신으로 만들어진 벽지는 단순히 공간을 채우는 것을 넘어, 당신의 삶에 영감을 불어넣는 예술 작품이 될 것입니다.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://image.replicate.ai/noodles/g244b08f8452e896f600f13524b089c1ed8c82662" alt="모던하고 미니멀한 거실 인테리어">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="section">
+        <div class="container">
+            <h2 class="section-title">우리의 컬렉션</h2>
+            <p class="section-subtitle">절제된 아름다움과 최상의 품질로 완성된 Modern Wall의 다양한 벽지 컬렉션을 만나보세요.</p>
+            <div class="product-grid">
+                <div class="product-item">
+                    <img src="https://image.replicate.ai/noodles/g5c4f210a7b48c4e0b0b537f2a1b14a242c76a9a3" alt="젠 스톤 벽지">
+                    <div class="product-info">
+                        <h3>젠 스톤 (Zen Stone)</h3>
+                        <p>자연의 평온함을 담은 듯한 차분한 스톤 텍스처의 벽지입니다. 공간에 안정감과 고급스러움을 더해줍니다.</p>
+                        <span class="price">₩95,000 / 롤</span>
+                        <a href="#" class="btn">자세히 보기</a>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="https://image.replicate.ai/noodles/g320a061b4020a591e1d3e8e7855b57d6271a0695" alt="어반 그레이 벽지">
+                    <div class="product-info">
+                        <h3>어반 그레이 (Urban Grey)</h3>
+                        <p>도시적인 세련미가 느껴지는 모던 그레이 톤의 벽지입니다. 어느 가구와도 조화롭게 어울립니다.</p>
+                        <span class="price">₩88,000 / 롤</span>
+                        <a href="#" class="btn">자세히 보기</a>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="https://image.replicate.ai/noodles/g9776f1c4293933c0667e2a9b2b52701d0a5146c2" alt="화이트 오브젝트 벽지">
+                    <div class="product-info">
+                        <h3>화이트 오브젝트 (White Object)</h3>
+                        <p>깨끗하고 순수한 화이트 컬러에 미묘한 텍스처를 더한 벽지입니다. 공간을 더욱 넓고 밝게 연출합니다.</p>
+                        <span class="price">₩82,000 / 롤</span>
+                        <a href="#" class="btn">자세히 보기</a>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="https://image.replicate.ai/noodles/g56ddbf9d73d6118d39343ee0fb6b3b5c3ff9485b" alt="리넨 베이지 벽지">
+                    <div class="product-info">
+                        <h3>리넨 베이지 (Linen Beige)</h3>
+                        <p>따뜻하고 포근한 리넨 질감의 베이지 벽지입니다. 아늑하고 편안한 분위기를 선사합니다.</p>
+                        <span class="price">₩90,000 / 롤</span>
+                        <a href="#" class="btn">자세히 보기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">문의하기</h2>
+            <p class="section-subtitle">궁금한 점이 있으시거나 상담을 원하시면 언제든지 문의해주세요. 전문가가 친절하게 답변해드립니다.</p>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">이름</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">이메일</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">전화번호</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="message">메시지</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn">문의 제출</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-col">
+                <h4>MODERN WALL</h4>
+                <p>당신의 공간에 스며드는 <br>미니멀하고 모던한 아름다움.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>회사 정보</h4>
+                <ul>
+                    <li><a href="#about">회사 소개</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">이용약관</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>고객 지원</h4>
+                <ul>
+                    <li><a href="#contact">문의하기</a></li>
+                    <li><a href="#">자주 묻는 질문</a></li>
+                    <li><a href="#">시공 안내</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>연락처</h4>
+                <p>주소: 서울특별시 강남구 테헤란로 123</p>
+                <p>전화: 02-1234-5678</p>
+                <p>이메일: info@modernwall.co.kr</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Modern Wall. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for social icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모던 벽지 | 4050 라이프스타일을 위한 미니멀 디자인</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #333; /* 어두운 텍스트 */
+            --secondary-color: #666; /* 보조 텍스트 */
+            --accent-color: #E0E0E0; /* 밝은 회색 강조 */
+            --background-light: #F8F8F8; /* 아주 밝은 배경 */
+            --background-white: #FFFFFF; /* 흰색 배경 */
+            --border-color: #EEE; /* 얇은 경계선 */
+            --header-height: 80px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            color: var(--primary-color);
+            background-color: var(--background-light);
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            width: 100%;
+            height: var(--header-height);
+            background-color: var(--background-white);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .header-container {
+            width: 1200px;
+            max-width: 90%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 40px;
+        }
+
+        nav ul li a {
+            font-size: 17px;
+            font-weight: 500;
+            color: var(--secondary-color);
+            position: relative;
+            padding-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 70vh; /* viewport height */
+            background-color: var(--accent-color); /* 임시 배경색 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--primary-color);
+            margin-top: var(--header-height);
+            overflow: hidden; /* 이미지 오버플로우 방지 */
+            background-size: cover;
+            background-position: center;
+            background-image: url('https://image.replicate.ai/noodles/g5c4f210a7b48c4e0b0b537f2a1b14a242c76a9a3'); /* 삽입된 Hero 이미지 */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.3) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            color: var(--primary-color); /* 텍스트 색상을 어둡게 유지 */
+        }
+
+        .hero p {
+            font-size: 20px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            color: var(--secondary-color); /* 텍스트 색상을 어둡게 유지 */
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--background-white);
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            background-color: #555;
+            transform: translateY(-2px);
+        }
+
+        /* Section General Styling */
+        .section {
+            padding: 80px 0;
+            text-align: center;
+            background-color: var(--background-white);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section:nth-of-type(even) {
+            background-color: var(--background-light);
+        }
+
+        .container {
+            width: 1200px;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 44px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            letter-spacing: -0.8px;
+        }
+
+        .section-subtitle {
+            font-size: 19px;
+            font-weight: 300;
+            color: var(--secondary-color);
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            text-align: left;
+            flex-wrap: wrap; /* 반응형을 위해 추가 */
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+        }
+
+        .about-text h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+        }
+
+        .about-text p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            line-height: 1.8;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Products Section */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .product-item {
+            background-color: var(--background-white);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+        }
+
+        .product-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-info h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .product-info p {
+            font-size: 16px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            line-height: 1.7;
+            height: 75px; /* 3줄 고정 높이 */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+
+        .product-info .price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .product-info .btn {
+            padding: 12px 25px;
+            font-size: 16px;
+            box-shadow: none;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        .product-info .btn:hover {
+            background-color: var(--primary-color);
+            color: var(--background-white);
+        }
+
+        /* Contact Section */
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: var(--background-white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 17px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 16px;
+            color: var(--primary-color);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(51, 51, 51, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form .btn {
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--background-white);
+            padding: 60px 0;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+            text-align: left;
+        }
+
+        .footer-col h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-col p, .footer-col ul li {
+            margin-bottom: 10px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .footer-col a {
+            color: rgba(255,255,255,0.7);
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--background-white);
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 24px;
+            color: rgba(255,255,255,0.7);
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--background-white);
+        }
+
+        .copyright {
+            width: 100%;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 15px;
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .header-container {
+                max-width: 95%;
+            }
+
+            nav ul li {
+                margin-left: 25px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 38px;
+            }
+
+            .section-subtitle {
+                font-size: 17px;
+            }
+
+            .about-content {
+                flex-direction: column;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .about-image, .about-text {
+                max-width: 100%;
+            }
+
+            .about-text h3 {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 24px;
+            }
+
+            nav {
+                display: none; /* 모바일에서는 햄버거 메뉴 등으로 대체 고려 */
+            }
+
+            .hero {
+                height: 60vh;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .section-subtitle {
+                margin-bottom: 40px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-col {
+                min-width: 100%;
+                text-align: center;
+            }
+
+            .footer-col h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .social-links {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            .hero p {
+                font-size: 15px;
+            }
+            .btn {
+                padding: 12px 25px;
+                font-size: 16px;
+            }
+            .form-group input,
+            .form-group textarea {
+                padding: 12px;
+                font-size: 15px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">MODERN WALL</a>
+            <nav>
+                <ul>
+                    <li><a href="#hero">홈</a></li>
+                    <li><a href="#about">회사소개</a></li>
+                    <li><a href="#products">제품</a></li>
+                    <li><a href="#contact">문의</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>당신의 공간에 미니멀리즘을 더하다</h1>
+            <p>4050 세대의 세련된 취향을 위한 고품격 모던 벽지</p>
+            <a href="#products" class="btn">제품 보러가기</a>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">우아함과 품격을 위한 선택</h2>
+            <p class="section-subtitle">저희는 4050 세대의 라이프스타일에 완벽하게 어울리는 미니멀하고 모던한 벽지를 만듭니다.</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>미니멀리즘의 가치, 벽지 안에 담다</h3>
+                    <p>복잡함 속에서 단순함의 아름다움을 추구하는 현대인들을 위해, 저희 Modern Wall은 절제된 디자인과 최고급 소재를 사용하여 공간에 평온함과 세련됨을 선사합니다.</p>
+                    <p>오랜 경험과 장인정신으로 만들어진 벽지는 단순히 공간을 채우는 것을 넘어, 당신의 삶에 영감을 불어넣는 예술 작품이 될 것입니다.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://image.replicate.ai/noodles/g244b08f8452e896f600f13524b089c1ed8c82662" alt="모던하고 미니멀한 거실 인테리어">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="section">
+        <div class="container">
+            <h2 class="section-title">우리의 컬렉션</h2>
+            <p class="section-subtitle">절제된 아름다움과 최상의 품질로 완성된 Modern Wall의 다양한 벽지 컬렉션을 만나보세요.</p>
+            <div class="product-grid">
+                <div class="product-item">
+                    <img src="https://image.replicate.ai/noodles/g5c4f210a7b48c4e0b0b537f2a1b14a242c76a9a3" alt="젠 스톤 벽지">
+                    <div class="product-info">
+                        <h3>젠 스톤 (Zen Stone)</h3>
+                        <p>자연의 평온함을 담은 듯한 차분한 스톤 텍스처의 벽지입니다. 공간에 안정감과 고급스러움을 더해줍니다.</p>
+                        <span class="price">₩95,000 / 롤</span>
+                        <a href="#" class="btn">자세히 보기</a>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="https://image.replicate.ai/noodles/g320a061b4020a591e1d3e8e7855b57d6271a0695" alt="어반 그레이 벽지">
+                    <div class="product-info">
+                        <h3>어반 그레이 (Urban Grey)</h3>
+                        <p>도시적인 세련미가 느껴지는 모던 그레이 톤의 벽지입니다. 어느 가구와도 조화롭게 어울립니다.</p>
+                        <span class="price">₩88,000 / 롤</span>
+                        <a href="#" class="btn">자세히 보기</a>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="https://image.replicate.ai/noodles/g9776f1c4293933c0667e2a9b2b52701d0a5146c2" alt="화이트 오브젝트 벽지">
+                    <div class="product-info">
+                        <h3>화이트 오브젝트 (White Object)</h3>
+                        <p>깨끗하고 순수한 화이트 컬러에 미묘한 텍스처를 더한 벽지입니다. 공간을 더욱 넓고 밝게 연출합니다.</p>
+                        <span class="price">₩82,000 / 롤</span>
+                        <a href="#" class="btn">자세히 보기</a>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="https://image.replicate.ai/noodles/g56ddbf9d73d6118d39343ee0fb6b3b5c3ff9485b" alt="리넨 베이지 벽지">
+                    <div class="product-info">
+                        <h3>리넨 베이지 (Linen Beige)</h3>
+                        <p>따뜻하고 포근한 리넨 질감의 베이지 벽지입니다. 아늑하고 편안한 분위기를 선사합니다.</p>
+                        <span class="price">₩90,000 / 롤</span>
+                        <a href="#" class="btn">자세히 보기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">문의하기</h2>
+            <p class="section-subtitle">궁금한 점이 있으시거나 상담을 원하시면 언제든지 문의해주세요. 전문가가 친절하게 답변해드립니다.</p>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">이름</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">이메일</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">전화번호</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="message">메시지</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn">문의 제출</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-col">
+                <h4>MODERN WALL</h4>
+                <p>당신의 공간에 스며드는 <br>미니멀하고 모던한 아름다움
